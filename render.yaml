@@ -3,7 +3,10 @@ services:
     name: n8n-blog-automation
     env: node
     plan: free
-    buildCommand: npm run build
+    buildCommand: |
+      npm install -g turbo
+      npm install
+      npm run build
     startCommand: n8n start
     envVars:
       - key: N8N_BASIC_AUTH_ACTIVE
@@ -14,3 +17,7 @@ services:
         value: changeme
       - key: GENERIC_TIMEZONE
         value: Asia/Kolkata
+      - key: N8N_HOST
+        value: n8n-blog.onrender.com
+      - key: N8N_PORT
+        value: "5678"
